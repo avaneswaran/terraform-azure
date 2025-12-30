@@ -2,14 +2,10 @@
   value = azurerm_resource_group.main.name
 }
 
-output "vnet_name" {
-  value = azurerm_virtual_network.main.name
+output "vm_public_ip" {
+  value = azurerm_public_ip.vm.ip_address
 }
 
-output "subnet_id" {
-  value = azurerm_subnet.main.id
-}
-
-output "credentials_source" {
-  value = "HashiCorp Vault at 192.168.56.104:8200"
+output "ssh_command" {
+  value = "ssh azureuser@${azurerm_public_ip.vm.ip_address}"
 }
